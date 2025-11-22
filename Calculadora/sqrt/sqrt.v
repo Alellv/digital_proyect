@@ -12,20 +12,17 @@ module sqrt (
 parameter START          = 3'b000;
 parameter LOAD           = 3'b001;
 parameter SHIFT          = 3'b010;
-parameter CHECK           = 3'b011;
+parameter CHECK          = 3'b011;
 parameter CHECK_END      = 3'b100;
 parameter END            = 3'b101;
 
 reg [2:0] state;
-reg [31:0] A;          // registro raiz expandido
-reg [15:0] result_par;          // root parcial
-wire [17:0] comparador;       // cambiado a wire (combinacional)
-reg [17:0] residuo;
+reg [31:0] A;              // registro raiz expandido
+reg [15:0] result_par;     // root parcial
+reg [31:0] comparador;     // increased bit width
+reg [31:0] residuo;        // increased bit width
 
 reg [4:0]  count;
-
-// colocar aquí, dentro del módulo y fuera de los always/initial
-assign comparador = ({2'b0, result_par} << 1) + 18'd1;
 
 initial begin
     result = 0;
@@ -44,7 +41,7 @@ begin
         START: begin
             done  <= 0;
             result <= 0;
-            count <= 5'd7;          // 16 bits => 8 iteraciones; inicializar en 7
+            count <= 8;          // 16 bits / 2 = 8 iteraciones
             if(init)
                 state <= LOAD;
             else
@@ -52,7 +49,7 @@ begin
         end
         
         LOAD: begin
-            A <= {op_A,16'b0};
+            A <= {op_A, 16'b0};
             residuo <= 0;
             result_par <= 0;
             done <= 0;
@@ -60,25 +57,26 @@ begin
         end
 
         SHIFT: begin // bajar los siguientes 2 bits
-            residuo <= {residuo[15:0], A[31:30]};
-            A <= {A[29:0],2'b00};
+            residuo <= {residuo[29:0], A[31:30]};
+            A <= {A[29:0], 2'b00};
             state <= CHECK;
         end
 
         CHECK: begin
-            // comparador ya es combinacional; usar directamente
-            if(residuo >= comparador) begin
-                residuo <= residuo - comparador;
-                result_par <= (result_par << 1) | 1;
+            // Correct formula: (result_par << 2) + 1
+            comparador <= {14'b0, result_par, 2'b00} + 1;
+            if(residuo >= ({14'b0, result_par, 2'b00} + 1)) begin
+                residuo <= residuo - ({14'b0, result_par, 2'b00} + 1);
+                result_par <= {result_par[14:0], 1'b1};
             end
             else begin
-                result_par <= (result_par << 1);
+                result_par <= {result_par[14:0], 1'b0};
             end
             state <= CHECK_END;
         end
 
         CHECK_END: begin
-            if(count == 0) begin
+            if(count == 1) begin  // changed from == 0
                 result <= result_par;
                 state <= END;
             end else begin

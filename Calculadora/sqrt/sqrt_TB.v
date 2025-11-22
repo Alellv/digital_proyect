@@ -46,7 +46,7 @@ initial begin
     reset = 0;
 
     // TEST 1 : sqrt(144) = 12
-    op_A = 16'd144;
+    op_A = 16'd2500;
     init = 1;
     #10 init = 0;
 
