@@ -12,7 +12,7 @@ module sqrt (
 parameter START          = 3'b000;
 parameter LOAD           = 3'b001;
 parameter SHIFT          = 3'b010;
-parameter TEST           = 3'b011;
+parameter CHECK           = 3'b011;
 parameter CHECK_END      = 3'b100;
 parameter END            = 3'b101;
 
@@ -60,10 +60,10 @@ begin
         SHIFT: begin // bajar los siguientes 2 bits
             residuo <= {residuo[13:0], A[31:30]};   
             A <= {A[29:0],2'b00};
-            state <= TEST;
+            state <= CHECK;
         end
 
-        TEST: begin
+        CHECK: begin
             comparador = (result << 1) + 1;
             if(residuo >= comparador) begin
                 residuo <= residuo - comparador;
