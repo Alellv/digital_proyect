@@ -19,10 +19,13 @@ parameter END            = 3'b101;
 reg [2:0] state;
 reg [31:0] A;          // registro raiz expandido
 reg [15:0] result_par;          // root parcial
-reg [15:0] comparador;
-reg [15:0] residuo;
+wire [17:0] comparador;       // cambiado a wire (combinacional)
+reg [17:0] residuo;
 
 reg [4:0]  count;
+
+// colocar aquí, dentro del módulo y fuera de los always/initial
+assign comparador = ({2'b0, result_par} << 1) + 18'd1;
 
 initial begin
     result = 0;
@@ -41,7 +44,7 @@ begin
         START: begin
             done  <= 0;
             result <= 0;
-            count <= 8;          // 16 bits 8 iteraciones
+            count <= 5'd7;          // 16 bits => 8 iteraciones; inicializar en 7
             if(init)
                 state <= LOAD;
             else
@@ -57,13 +60,13 @@ begin
         end
 
         SHIFT: begin // bajar los siguientes 2 bits
-            residuo <= {residuo[13:0], A[31:30]};   
+            residuo <= {residuo[15:0], A[31:30]};
             A <= {A[29:0],2'b00};
             state <= CHECK;
         end
 
         CHECK: begin
-            comparador = (result_par << 1) + 1;
+            // comparador ya es combinacional; usar directamente
             if(residuo >= comparador) begin
                 residuo <= residuo - comparador;
                 result_par <= (result_par << 1) | 1;
