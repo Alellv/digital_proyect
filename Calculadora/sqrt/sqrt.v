@@ -19,8 +19,8 @@ parameter END            = 3'b101;
 reg [2:0] state;
 reg [31:0] A;              // registro raiz expandido
 reg [15:0] result_par;     // root parcial
-reg [31:0] comparador;     // increased bit width
-reg [31:0] residuo;        // increased bit width
+reg [31:0] comparador;     
+reg [31:0] residuo;       
 
 reg [4:0]  count;
 
@@ -63,7 +63,6 @@ begin
         end
 
         CHECK: begin
-            // Correct formula: (result_par << 2) + 1
             comparador <= {14'b0, result_par, 2'b00} + 1;
             if(residuo >= ({14'b0, result_par, 2'b00} + 1)) begin
                 residuo <= residuo - ({14'b0, result_par, 2'b00} + 1);
@@ -76,7 +75,7 @@ begin
         end
 
         CHECK_END: begin
-            if(count == 1) begin  // changed from == 0
+            if(count == 1) begin 
                 result <= result_par;
                 state <= END;
             end else begin
