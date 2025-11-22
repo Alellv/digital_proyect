@@ -17,9 +17,8 @@ parameter CHECK_END      = 3'b100;
 parameter END            = 3'b101;
 
 reg [2:0] state;
-
 reg [31:0] A;          // registro raiz expandido
-reg [15:0] result;          // root parcial
+reg [15:0] result_par;          // root parcial
 reg [15:0] comparador;
 reg [15:0] residuo;
 
@@ -52,7 +51,7 @@ begin
         LOAD: begin
             A <= {op_A,16'b0};
             residuo <= 0;
-            result <= 0;
+            result_par <= 0;
             done <= 0;
             state <= SHIFT;
         end
@@ -64,20 +63,20 @@ begin
         end
 
         CHECK: begin
-            comparador = (result << 1) + 1;
+            comparador = (result_par << 1) + 1;
             if(residuo >= comparador) begin
                 residuo <= residuo - comparador;
-                result <= (result << 1) | 1;
+                result_par <= (result_par << 1) | 1;
             end
             else begin
-                result <= (result << 1);
+                result_par <= (result_par << 1);
             end
             state <= CHECK_END;
         end
 
         CHECK_END: begin
             if(count == 0) begin
-                result <= result;
+                result <= result_par;
                 state <= END;
             end else begin
                 count <= count - 1;
