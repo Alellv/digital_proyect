@@ -29,7 +29,7 @@ module tb_bin2bcd;
     // 4. Proceso de Prueba (Aquí ocurre la acción)
     initial begin
         // Configuración para GTKWave (Esto crea el archivo de ondas)
-        $dumpfile("bin2bcd_TB.vcd"); // Nombre del archivo de salida
+        $dumpfile("simulacion.vcd"); // Nombre del archivo de salida
         $dumpvars(0, tb_bin2bcd);    // Guardar todas las variables
 
         // A) Inicialización

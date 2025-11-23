@@ -2,18 +2,14 @@ module control_fsm (
     input wire clk,
     input wire reset,
     input wire init,
-    input wire z,          // Señal Z (Zero) del contador
-    output reg sh,         // Shift enable
-    output reg ld,         // Load initial data
-    output reg add,        // Enable BCD correction addition
-    // sel y ld_msb no son estrictamente necesarios para el algoritmo estándar 
-    // pero los incluyo para seguir tu diagrama de estados.
-    output reg sel,        
+    input wire z,         
+    output reg sh,         
+    output reg ld,        
+    output reg add,       
     output reg ld_msb,
     output reg done
 );
 
-    // --- Codificación de Estados (One-Hot para robustez) ---
     localparam START     = 6'b000001;
     localparam SHIFT_DEC = 6'b000010;
     localparam CHECK     = 6'b000100;
@@ -23,7 +19,6 @@ module control_fsm (
 
     reg [5:0] current_state, next_state;
 
-    // --- Lógica Secuencial (Memoria de Estado) ---
     always @(posedge clk or posedge reset) begin
         if (reset)
             current_state <= START;
@@ -31,7 +26,6 @@ module control_fsm (
             current_state <= next_state;
     end
 
-    // --- Lógica Combinacional del Siguiente Estado ---
     always @(*) begin
         case (current_state)
             START: 
@@ -39,50 +33,48 @@ module control_fsm (
                 else      next_state = START;
             
             SHIFT_DEC: 
-                if (z)    next_state = END1; // Si contador=0, terminó
-                else      next_state = CHECK; // Si no, a corregir
+                if (z)    next_state = END1; 
+                else      next_state = CHECK; 
             
             CHECK:        next_state = LOAD_A2;
             LOAD_A2:      next_state = ADD;
-            ADD:          next_state = SHIFT_DEC; // Vuelve a desplazar
+            ADD:          next_state = SHIFT_DEC; 
             
-            END1:         next_state = END1; // Estado final, espera reset
+            END1:         next_state = END1; 
             
             default:      next_state = START;
         endcase
     end
 
-    // --- Lógica de Salidas (Basada en las burbujas del diagrama) ---
     always @(*) begin
-        // Valores por defecto (importante para evitar latches)
         sh = 0; ld = 0; add = 0; sel = 0; ld_msb = 0; done = 0;
 
         case (current_state)
             START: begin
-                ld = 1;      // "ld = 1" en el diagrama
+                ld = 1;    
             end
 
             SHIFT_DEC: begin
-                sh = 1;      // "sh = 1", se usa para desplazar y decrementar contador
+                sh = 1;      
                 sel = 1;
                 ld_msb = 1;
             end
 
             CHECK: begin
-                sel = 1;     // "sel = 1"
-                ld_msb = 1;  // "ld_msb = 1"
+                sel = 1;     
+                ld_msb = 1;  
             end
 
             LOAD_A2: begin
-                add = 1;     // "add = 1", momento de cargar la corrección BCD
+                add = 1;    
             end
             
             ADD: begin
-                 // Estado de transición, salidas por defecto en 0
+                 
             end
 
             END1: begin
-                done = 1;    // "done = 1"
+                done = 1;    
             end
         endcase
     end
