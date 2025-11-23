@@ -2,7 +2,6 @@
 
 module tb_perip_bcd2bin;
 
-    // Señales
     reg clk;
     reg reset;
     reg [4:0] addr;
@@ -11,7 +10,6 @@ module tb_perip_bcd2bin;
     reg wr;
     wire [31:0] dout;
     
-    // Variable temporal para guardar lo que leemos
     reg [31:0] dato_leido_safe; 
 
     perip_bcd2bin uut (
@@ -20,7 +18,6 @@ module tb_perip_bcd2bin;
 
     always #5 clk = ~clk;
 
-    // --- TAREAS ---
     task escribir_bus(input [4:0] direccion, input [31:0] dato);
         begin
             @(posedge clk);
@@ -36,7 +33,6 @@ module tb_perip_bcd2bin;
         end
     endtask
 
-    // TAREA CORREGIDA: Captura el dato antes de apagar CS
     task leer_bus(input [4:0] direccion);
         begin
             @(posedge clk);
@@ -53,7 +49,6 @@ module tb_perip_bcd2bin;
         end
     endtask
 
-    // --- TEST ---
     initial begin
         $dumpfile("sim_perip.vcd");
         $dumpvars(0, tb_perip_bcd2bin);
@@ -63,24 +58,18 @@ module tb_perip_bcd2bin;
 
         $display("--- INICIO TEST ---");
 
-        // 1. Escribir 255
         escribir_bus(5'h04, 32'h00000255);
-        // 2. Start
         escribir_bus(5'h08, 32'h00000001);
 
-        // 3. Polling
         leer_bus(5'h14);
-        // Usamos la variable guardada para chequear
         while (dato_leido_safe == 0) begin 
             #10;
             leer_bus(5'h14);
         end
         $display("Done recibido!");
 
-        // 4. Leer Resultado
         leer_bus(5'h10);
         
-        // Imprimimos la variable guardada, no el cable directo
         $display("Resultado Final: %h (Esperado: 000000ff)", dato_leido_safe);
 
         #50;
