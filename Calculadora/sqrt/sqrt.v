@@ -1,10 +1,8 @@
 module sqrt (
     input              reset,
     input              clk,
-    
     input              init,
     output reg         done,
-
     input      [15:0]  op_A,      // numero a encontrar raiz
     output reg [15:0]  result     // resultado
 );
