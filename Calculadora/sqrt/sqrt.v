@@ -38,7 +38,7 @@ begin
 
         START: begin
             done  <= 0;
-            result <= 0;
+            //result <= 0;
             count <= 8;          // 16 bits / 2 = 8 iteraciones
             if(init)
                 state <= LOAD;
