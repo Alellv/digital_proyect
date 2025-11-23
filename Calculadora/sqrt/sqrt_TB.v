@@ -34,7 +34,6 @@ initial begin
     forever #5 clk = ~clk;   // periodo 10ns
 end
 
-// estímulos
 initial begin
 
     // inicio
