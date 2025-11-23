@@ -2,7 +2,7 @@ TARGET=bcd2bin
 TOP=bcd2bin_top
 
 OBJS = bcd2bin_top.v bcd_sub_block.v control_fsm_b2b.v down_counter.v main_register_right.v perip_bcd2bin.v
-PER_OBJS = perip_sqrt.v $(OBJS)
+PER_OBJS = perip_bcd2bin.v $(OBJS)
 
 BUILD_DIR = build
 
