@@ -5,7 +5,7 @@ module tb_bcd2bin;
     wire [15:0] bin_out;
     wire done;
 
-    // Conectar al TOP
+
     bcd2bin_top uut (
         .clk(clk), .reset(reset), .start(start),
         .bcd_in(bcd_in), .bin_out(bin_out), .done(done)
@@ -20,7 +20,6 @@ module tb_bcd2bin;
         clk=0; reset=1; start=0; bcd_in=0;
         #20; reset=0; #10;
 
-        // PRUEBA: Convertir BCD 00255 -> Binario FF
         $display("Test: Convirtiendo 255...");
         bcd_in = 20'h00593; 
         start = 1; #10; start = 0;
