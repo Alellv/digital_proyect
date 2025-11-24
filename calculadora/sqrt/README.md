@@ -6,7 +6,7 @@
 
 ## Camino de datos
 
-![Camino de datos](diagr/)
+![Camino de datos](diagr/cdatsqrt.png)
 	
 ## Diagrama de estados
 
