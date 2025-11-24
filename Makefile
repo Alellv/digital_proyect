@@ -36,38 +36,32 @@ COMM_OBJS+= cores/uart/uart.v
 
  #-----------------------------------------------------------------------------------------MULTIPICADOR
 
-COMM_OBJS+= Calculadora/multi/ac.v 
-COMM_OBJS+= Calculadora/multi/comp.v
-COMM_OBJS+= Calculadora/multi/ctrl.v 
-COMM_OBJS+= Calculadora/multi/lsh.v 
-COMM_OBJS+= Calculadora/multi/multi.v 
-COMM_OBJS+= Calculadora/multi/perip_multi.v 
-COMM_OBJS+= Calculadora/multi/rsh.v 
+COMM_OBJS+= calculadora/multi/ac.v 
+COMM_OBJS+= calculadora/multi/comp.v
+COMM_OBJS+= calculadora/multi/ctrl.v 
+COMM_OBJS+= calculadora/multi/lsh.v 
+COMM_OBJS+= calculadora/multi/multi.v 
+COMM_OBJS+= calculadora/multi/perip_multi.v 
+COMM_OBJS+= calculadora/multi/rsh.v 
 
 #-----------------------------------------------------------------------------------------DIVISOR
-COMM_OBJS+= Calculadora/div/a.v
-COMM_OBJS+= Calculadora/div/comp.v 
-COMM_OBJS+= Calculadora/div/count.v 
-COMM_OBJS+= Calculadora/div/ctrl.v 
-COMM_OBJS+= Calculadora/div/div.v  
-COMM_OBJS+= Calculadora/div/perip_div.v 
-COMM_OBJS+= Calculadora/div/sc_a2.v
+COMM_OBJS+= calculadora/div/a.v
+COMM_OBJS+= calculadora/div/comp.v 
+COMM_OBJS+= calculadora/div/count.v 
+COMM_OBJS+= calculadora/div/ctrl.v 
+COMM_OBJS+= calculadora/div/div.v  
+COMM_OBJS+= calculadora/div/perip_div.v 
+COMM_OBJS+= calculadora/div/sc_a2.v
 
 #-----------------------------------------------------------------------------------------BINARIO A BCD
-COMM_OBJS+=cores/bin2bcd/add_sub_c2.v
-COMM_OBJS+=cores/bin2bcd/bin2bcd.v
-COMM_OBJS+=cores/bin2bcd/mux2.v
-COMM_OBJS+=cores/bin2bcd/count.v
-COMM_OBJS+=cores/bin2bcd/ctrl_b2b.v  
-COMM_OBJS+=cores/bin2bcd/perip_bin2bcd.v
-COMM_OBJS+=cores/bin2bcd/lsr4.v
-COMM_OBJS+=cores/bin2bcd/reg_msb.v
-
-
+COMM_OBJS+= calculadora/binario_bcd/bcd_block.v 
+COMM_OBJS+= calculadora/binario_bcd/bin2bcd_top.v 
+COMM_OBJS+= calculadora/binario_bcd/control_fms.v 
+COMM_OBJS+= calculadora/binario_bcd/down_counter.v 
+COMM_OBJS+= calculadora/binario_bcd/main_register.v 
+COMM_OBJS+= calculadora/binario_bcd/perip_bin2bcd.v 
 #-----------------------------------------------------------------------------------------BCD A BINARIO
-COMM_OBJS+=cores/bcd2bin/bcd2bin.v
-COMM_OBJS+=cores/bcd2bin/perip_bcd2bin.v
-COMM_OBJS+=cores/bcd2bin/rsr4.v
+COMM_OBJS+= calculadora/binario_bcd/	
 
 #-----------------------------------------------------------------------------------------BRAM SOC.V
 COMM_OBJS += cores/bram/bram.v
