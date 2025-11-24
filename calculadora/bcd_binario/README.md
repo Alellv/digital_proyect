@@ -2,23 +2,18 @@
 
 ## Diagrama de flujo
 
-### Primera version
-
-![Diagrama de flujo BCD](diag/)
-
-### Version final
-
-![Diagrama de flujo divisor vf](diag/)
+![Diagrama de flujo](diag/Flujo Bcd2Bin.drawio.png)
 
 ## Camino de datos
 
-![Camino de datos](diag/)
+![Camino de datos](diag/Camino de Datos.drawio.png)
 	
 ## Diagrama de estados
 
-![Diagrama de estados](diag/)
+![Diagrama de estados](diag/Diagrama Estados bcd2bin.drawio.png)
 
 ## Simulación periferico
 
-![Simulación de periferico](diag/)
+![Simulación de periferico](diag/Sim_perip_bcd2bin.png)
+
 
