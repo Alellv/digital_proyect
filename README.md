@@ -1,8 +1,11 @@
 # digital_proyect
 
 ## Integrantes del grupo
+
 David Fernando Castro Godoy
+
 Alejando Llano Vesga
+
 Duvan Albeiro Bustos
 
 ## Contenidos
