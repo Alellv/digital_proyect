@@ -1,14 +1,13 @@
-module peripheral_bcd2bin(
-    input wire clk,
-    input wire reset,
-    
-    input wire [4:0] addr,  
-    input wire [31:0] din, 
-    input wire cs,          
-    input wire wr,          
-    
-    output reg [31:0] dout  
-);
+module peripheral_bcd2bin(clk , reset , d_in , cs , addr , rd , wr, d_out );
+    input clk;
+    input reset;
+    input [15:0] d_in;
+    input cs;
+    input [4:0]  addr; // 4 LSB from j1_io_addr
+    input rd;
+    input wr;
+    output reg [31:0] d_out;
+
 
     reg [19:0] reg_bcd_in; 
     reg reg_start;        
