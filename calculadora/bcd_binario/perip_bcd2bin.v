@@ -31,9 +31,9 @@ module peripheral_bcd2bin(clk , reset , d_in , cs , addr , rd , wr, d_out );
             reg_start <= 0;
         end else if (cs && wr) begin
             case (addr[4:2]) 
-                3'b001: reg_bcd_in <= din[19:0]; 
+                3'b001: reg_bcd_in <= d_in[19:0]; 
                 
-                3'b010: reg_start  <= din[0];    
+                3'b010: reg_start  <= d_in[0];    
                 
                 default: begin
                     reg_start <= 0; 
@@ -45,14 +45,14 @@ module peripheral_bcd2bin(clk , reset , d_in , cs , addr , rd , wr, d_out );
     end
 
     always @(*) begin
-        dout = 32'd0;
+        d_out = 32'd0;
         if (cs && !wr) begin 
             case (addr[4:2])
-                3'b100: dout = {16'b0, wire_bin_out}; 
+                3'b100: d_out = {16'b0, wire_bin_out}; 
                 
-                3'b101: dout = {31'b0, wire_done};    
+                3'b101: d_out = {31'b0, wire_done};    
                 
-                default: dout = 32'd0;
+                default: d_out = 32'd0;
             endcase
         end
     end
