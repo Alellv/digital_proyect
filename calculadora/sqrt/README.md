@@ -14,4 +14,4 @@
 
 ## Simulación periferico
 
-![Simulación de periferico](diag/simperipsqrt.png)
+![Simulación de periferico](diagr/simperipsqrt.png)
