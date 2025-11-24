@@ -4,15 +4,11 @@
 
 ### Primera version
 
-![Diagrama de flujo multiplicador v1](diag/)
-
-### Segunda version
-
-![Diagrama de flujo multiplicador v2](diag/)
+![Diagrama de flujo divisor v1](diag/)
 
 ### Version final
 
-![Diagrama de flujo multiplicador vf](diag/)
+![Diagrama de flujo divisor vf](diag/)
 
 ## Camino de datos
 
