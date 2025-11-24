@@ -46,9 +46,9 @@ COMM_OBJS+= calculadora/multi/rsh.v
 
 #-----------------------------------------------------------------------------------------DIVISOR
 COMM_OBJS+= calculadora/div/a.v
-COMM_OBJS+= calculadora/div/comp.v 
+COMM_OBJS+= calculadora/div/comp_div.v 
 COMM_OBJS+= calculadora/div/count.v 
-COMM_OBJS+= calculadora/div/ctrl.v 
+COMM_OBJS+= calculadora/div/ctrl_div.v 
 COMM_OBJS+= calculadora/div/div.v  
 COMM_OBJS+= calculadora/div/perip_div.v 
 COMM_OBJS+= calculadora/div/sc_a2.v

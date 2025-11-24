@@ -64,7 +64,7 @@ module SOC (
      .ledout(LEDS)
    ); 
 
-   peripheral_mult mult1 ( //-------------------------MULTIPLICADOR
+   perip_mult mult1 ( //-------------------------MULTIPLICADOR
       .clk(clk),
       .reset(!resetn),
       .d_in(mem_wdata[15:0]),
@@ -75,7 +75,7 @@ module SOC (
       .d_out(mult_dout)
    );
 
-   peripheral_div div1 ( //-------------------------DIVISOR
+   perip_div div1 ( //-------------------------DIVISOR
       .clk (clk),
       .reset (!resetn),
       .d_in (mem_wdata[15:0]),
@@ -85,7 +85,7 @@ module SOC (
       .wr(wr), 
       .d_out (div_dout) );
 
-   peripheral_sqrt sqrt1( //------------------------- RAIZ
+   perip_sqrt sqrt1( //------------------------- RAIZ
       .clk(clk) ,
       .reset (!resetn),
       .d_in (mem_wdata[15:0]),
@@ -95,7 +95,7 @@ module SOC (
       .wr (wr),
       .d_out (sqrt_dout) );
 
-   peripheral_bin2bcd bin2bcd0 ( //------------------------- BINARIO A BCD
+   perip_bin2bcd bin2bcd0 ( //------------------------- BINARIO A BCD
       .clk(clk),
       .reset(!resetn),
       .d_in(mem_wdata[15:0]),
@@ -106,7 +106,7 @@ module SOC (
       .d_out(bin2bcd_dout)
    );
 
-   peripheral_bcd2bin bcd2bin0 (  //------------------------- BCD A BINARIO
+   perip_bcd2bin bcd2bin0 (  //------------------------- BCD A BINARIO
       .clk(clk),
       .reset(!resetn),
       .d_in(mem_wdata[19:0]),
