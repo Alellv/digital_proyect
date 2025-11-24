@@ -1,4 +1,4 @@
-module down_counter (
+module down_counter1 (
     input wire clk, reset, load, enable, 
     output wire z
 );
