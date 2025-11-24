@@ -28,33 +28,32 @@ else
 endif
 
 TCL_SCRIPT = auto_generated.tcl
-
+#------------------------------------------------------------------------------------------CPU	
 COMM_OBJS+=  cores/cpu/femtorv32_quark_V2.v
+#-----------------------------------------------------------------------------------------UART
 COMM_OBJS+= cores/uart/perip_uart.v
 COMM_OBJS+= cores/uart/uart.v
 
+ #-----------------------------------------------------------------------------------------MULTIPICADOR
 
+COMM_OBJS+= Calculadora/multi/ac.v 
+COMM_OBJS+= Calculadora/multi/comp.v
+COMM_OBJS+= Calculadora/multi/ctrl.v 
+COMM_OBJS+= Calculadora/multi/lsh.v 
+COMM_OBJS+= Calculadora/multi/multi.v 
+COMM_OBJS+= Calculadora/multi/perip_multi.v 
+COMM_OBJS+= Calculadora/multi/rsh.v 
 
-COMM_OBJS+= cores/mult_ASM/perip_mult.v
-COMM_OBJS+= cores/mult_ASM/mult_32.v
-COMM_OBJS+= cores/mult_ASM/acc.v
-COMM_OBJS+= cores/mult_ASM/comp.v
-COMM_OBJS+= cores/mult_ASM/lsr_mult.v
-COMM_OBJS+= cores/mult_ASM/control_mult.v
-COMM_OBJS+= cores/mult_ASM/rsr.v
+#-----------------------------------------------------------------------------------------DIVISOR
+COMM_OBJS+= Calculadora/div/a.v
+COMM_OBJS+= Calculadora/div/comp.v 
+COMM_OBJS+= Calculadora/div/count.v 
+COMM_OBJS+= Calculadora/div/ctrl.v 
+COMM_OBJS+= Calculadora/div/div.v  
+COMM_OBJS+= Calculadora/div/perip_div.v 
+COMM_OBJS+= Calculadora/div/sc_a2.v
 
-
-COMM_OBJS+= cores/div/perip_div.v
-COMM_OBJS+= cores/div/div.v
-
-COMM_OBJS+= cores/sqrt_ASM/addc2.v
-COMM_OBJS+= cores/sqrt_ASM/count.v
-COMM_OBJS+= cores/sqrt_ASM/lsr.v 
-COMM_OBJS+= cores/sqrt_ASM/perip_sqrt.v
-COMM_OBJS+= cores/sqrt_ASM/sqrt.v
-COMM_OBJS+= cores/sqrt_ASM/lsr2.v
-COMM_OBJS+= cores/sqrt_ASM/control.v
-
+#-----------------------------------------------------------------------------------------BINARIO A BCD
 COMM_OBJS+=cores/bin2bcd/add_sub_c2.v
 COMM_OBJS+=cores/bin2bcd/bin2bcd.v
 COMM_OBJS+=cores/bin2bcd/mux2.v
@@ -64,17 +63,23 @@ COMM_OBJS+=cores/bin2bcd/perip_bin2bcd.v
 COMM_OBJS+=cores/bin2bcd/lsr4.v
 COMM_OBJS+=cores/bin2bcd/reg_msb.v
 
+
+#-----------------------------------------------------------------------------------------BCD A BINARIO
 COMM_OBJS+=cores/bcd2bin/bcd2bin.v
 COMM_OBJS+=cores/bcd2bin/perip_bcd2bin.v
 COMM_OBJS+=cores/bcd2bin/rsr4.v
+
+#-----------------------------------------------------------------------------------------BRAM SOC.V
 COMM_OBJS += cores/bram/bram.v
 COMM_OBJS +=  SOC.v
 
 OBJS += $(COMM_OBJS)
-
+#-----------------------------------------------------------------------------------------SPI_FLASH
 FLASH_OBJS =  $(COMM_OBJS)
 FLASH_OBJS += cores/spi_flash/MappedSPIFlash.v
+#-----------------------------------------------------------------------------------------SOC_FLASH.V
 FLASH_OBJS += SOC_flash.v
+#-----------------------------------------------------------------------------------------SIM_SPI_FLASH
 SIM_OBJS   = cores/sim_spi_flash/spiflash.v
 
 
@@ -351,9 +356,6 @@ configure_tang_primer_25k: $(TCL_SCRIPT)
 
 
 #Install netlistsvg for svg generation
-
-
-
 #export PATH=$PATH:/Work/CAD/IDE/bin/
 #export QT_QPA_PLATFORM_PLUGIN_PATH=/Work/CAD/IDE/Programmer/bin/PyQt5/qt-plugins
 #export QT_QPA_PLATFORM=xcb
