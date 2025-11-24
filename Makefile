@@ -29,10 +29,10 @@ endif
 
 TCL_SCRIPT = auto_generated.tcl
 #------------------------------------------------------------------------------------------CPU	
-COMM_OBJS+=  cores/cpu/femtorv32_quark_V2.v
+COMM_OBJS+=  calculadora/cpu/femtorv32_quark_V2.v
 #-----------------------------------------------------------------------------------------UART
-COMM_OBJS+= cores/uart/perip_uart.v
-COMM_OBJS+= cores/uart/uart.v
+COMM_OBJS+= calculadora/uart/perip_uart.v
+COMM_OBJS+= calculadora/uart/uart.v
 
  #-----------------------------------------------------------------------------------------MULTIPICADOR
 
@@ -68,17 +68,17 @@ COMM_OBJS+= calculadora/bcd_binario/down_counter.v
 COMM_OBJS+= calculadora/bcd_binario/main_register_right.v 	
 
 #-----------------------------------------------------------------------------------------BRAM SOC.V
-COMM_OBJS += cores/bram/bram.v
+COMM_OBJS += calculadora/bram/bram.v
 COMM_OBJS +=  SOC.v
 
 OBJS += $(COMM_OBJS)
 #-----------------------------------------------------------------------------------------SPI_FLASH
 FLASH_OBJS =  $(COMM_OBJS)
-FLASH_OBJS += cores/spi_flash/MappedSPIFlash.v
+FLASH_OBJS += calculadora/spi_flash/MappedSPIFlash.v
 #-----------------------------------------------------------------------------------------SOC_FLASH.V
 FLASH_OBJS += SOC_flash.v
 #-----------------------------------------------------------------------------------------SIM_SPI_FLASH
-SIM_OBJS   = cores/sim_spi_flash/spiflash.v
+SIM_OBJS   = calculadora/sim_spi_flash/spiflash.v
 
 
 
