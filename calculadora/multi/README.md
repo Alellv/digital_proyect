@@ -21,3 +21,7 @@
 ## Diagrama de estados
 
 ![Diagrama de estados](diag/Destadosmult.drawio.png)
+
+## Simulación periferico
+
+![Simulación de periferico](diag/simperipmult.png)
