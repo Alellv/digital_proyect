@@ -16,7 +16,7 @@
 
 ## Camino de datos
 
-![Camino de datos](diag/Cdatosmult.drawio.png)
+![Camino de datos](diag/Cdatosmult.drawi.png)
 	
 ## Diagrama de estados
 
