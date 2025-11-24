@@ -1,4 +1,4 @@
-module perip_bin2bcd (
+module peripheral_bin2bcd (
     input wire clk,
     input wire reset,
     

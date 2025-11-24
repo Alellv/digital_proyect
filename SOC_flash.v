@@ -96,7 +96,7 @@ module SOC_flash (
      .ledout(LEDS)
    ); 
 
-	peripheral_mult mult1 (
+	perip_multi mult1 (
 		.clk(clk), 
 		.reset(!resetn), 
 		.d_in(mem_wdata[15:0]), 

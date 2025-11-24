@@ -1,4 +1,4 @@
-module perip_bcd2bin (
+module peripheral_bcd2bin(
     input wire clk,
     input wire reset,
     
@@ -9,7 +9,6 @@ module perip_bcd2bin (
     
     output reg [31:0] dout  
 );
-
 
     reg [19:0] reg_bcd_in; 
     reg reg_start;        

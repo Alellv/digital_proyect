@@ -66,6 +66,7 @@ COMM_OBJS+= calculadora/bcd_binario/bcd_sub_block.v
 COMM_OBJS+= calculadora/bcd_binario/control_fsm_b2b.v 
 COMM_OBJS+= calculadora/bcd_binario/down_counter.v 
 COMM_OBJS+= calculadora/bcd_binario/main_register_right.v 	
+COMM_OBJS+= calculadora/bcd_binario/perip_bcd2bin.v  	
 
 #-----------------------------------------------------------------------------------------BRAM SOC.V
 COMM_OBJS += calculadora/bram/bram.v

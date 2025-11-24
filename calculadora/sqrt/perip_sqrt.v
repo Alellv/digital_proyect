@@ -7,7 +7,7 @@ module peripheral_sqrt(clk , reset , d_in , cs , addr , rd , wr, d_out );
   input [4:0]  addr; // 4 LSB from j1_io_addr
   input rd;
   input wr;
-  output reg [31:0]d_out;
+  output reg [31:0] d_out;
 
 //------------------------------------ regs and wires-------------------------------
 reg [4:0] s; 	//selector mux_4  and write registers
