@@ -57,7 +57,7 @@ COMM_OBJS+= calculadora/div/sc_a2.v
 COMM_OBJS+= calculadora/binario_bcd/bcd_block.v 
 COMM_OBJS+= calculadora/binario_bcd/bin2bcd_top.v 
 COMM_OBJS+= calculadora/binario_bcd/control_fms.v 
-COMM_OBJS+= calculadora/binario_bcd/down_counter.v 
+COMM_OBJS+= calculadora/binario_bcd/down_counter1.v 
 COMM_OBJS+= calculadora/binario_bcd/main_register.v 
 COMM_OBJS+= calculadora/binario_bcd/perip_bin2bcd.v 
 #-----------------------------------------------------------------------------------------BCD A BINARIO
