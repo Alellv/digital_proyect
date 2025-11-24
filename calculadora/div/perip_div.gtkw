@@ -1,0 +1,29 @@
+[*]
+[*] GTKWave Analyzer v3.3.117 (w)1999-2023 BSI
+[*] Sun Nov 23 16:10:08 2025
+[*]
+[dumpfile] "/home/work/Documents/visual/calc/div/perip_div_TB.vcd"
+[dumpfile_mtime] "Sun Nov 23 16:08:38 2025"
+[dumpfile_size] 8874
+[savefile] "/home/work/Documents/visual/calc/div/perip_div.gtkw"
+[timestart] 594900
+[size] 1000 600
+[pos] -1 -1
+*-17.000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] peripheral_div_TB.
+[treeopen] peripheral_div_TB.uut.
+[treeopen] peripheral_div_TB.uut.div0.
+[sst_width] 216
+[signals_width] 118
+[sst_expanded] 1
+[sst_vpaned_height] 295
+@24
+peripheral_div_TB.d_out[31:0]
+@28
+peripheral_div_TB.uut.div0.ctrl.done
+@24
+peripheral_div_TB.uut.div0.a.r[15:0]
+@29
+peripheral_div_TB.cs
+[pattern_trace] 1
+[pattern_trace] 0
