@@ -38,7 +38,7 @@ module bin2bcd_top (
         .data_out(bus_registro)
     );
 
-    down_counter contador (
+    down_counter1 contador (
         .clk(clk),
         .reset(reset),
         .load(w_load_init),
