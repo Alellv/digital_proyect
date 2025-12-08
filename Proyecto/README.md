@@ -69,7 +69,15 @@ Se usaron dos diagramas de flujo para representar el funcionamiento, esto para f
 
 ![Diagrama de flujo](DiagramasProyecto/DiagramasSensor/FlujoI2C.png)
 
-En este primer diagrama de flujo se establece como tal el funcionamiento del protocolo I2C. Primero se inician los contadores que se van a usar, luego se va a un estado de inactividad hasta que se de una señal de inicio para comenzar con la comunicación por protocolo; Una vez que
+En este primer diagrama de flujo se establece como tal el funcionamiento del protocolo I2C. Primero se inician los contadores que se van a usar, luego se va a un estado de inactividad hasta que se de una señal de inicio para comenzar con la comunicación por protocolo; Una vez que se cumple con la indicación de INIT, se envia la condicion de de inicio por SDA y se carga un byte de address el cual puede ser para indicar lectura o escritura. Lo siguiente es enviar cada bit de address usando el contador y una vez se han mandado todos, se revisa si esto fue recibido por el esclavo correctamente al leer el ACK, de no recibir un ACK, se regresa a IDLE.
+
+Tras recibir un ACK, lo siguiente que se debe hacer depende de si el address indicaba lectura o escritura:
+
+* Lectura: Si se va a leer, lo primero es que el maestro suelte SDA para que el esclavo pueda manejarlo libremente y reiniciar el contador de bit, antes se uso para saber cual bit de address se estaba enviando, pero en este caso se usará para saber cuantos bits se han leido y guardado en un registro. Una vez leidos todos los bits enviados por el esclavo, se usa un contador llamado by_cnt, el cual determina si hay más bytes de datos que se van a leer; Si faltan bytes por leer, el maestro enviará un bit de ACK, decrecerá by_cnt y se hará una preparación para leer otro byte de datos, si no faltan bytes por leer, se procederá a mandar un bit NACK y a terminar la comunicación con una condición de parada.
+* Escritura: Cuando se va a escribir en el esclavo el proceso es el mismo al de enviar el byte de address, se reinician contadores, se carga un byte para ser enviado bit a bit y se espera un ACK del esclavo para ver si se regresa a IDLE o se sigue, la diferencia aqui es que luego de enviar un byte se verifica si falta mandar más bytes al sensor, en caso de faltar, usando el contador se cargará el siguiente byte que debe ser enviado, pero si no faltan se procede a terminar la comunicación con la condición de parada.
+
+Una vez que se ha terminado la comunicación debido al bit de parada se regresa al estado de IDLE, sin embargo, para aplicar esto de forma correcta al sensor es necesario hacer algunos ajustes a lo que se va a enviar, lo cual se muestra en el siguiente diagrama de flujo.
+
 
 #### Diagrama de flujo para sensor AHT10
 
