@@ -121,5 +121,11 @@ Para entender el diagrama de estados se hará una breve explicación de cada est
 * WRITE_NACK: Se envia un bit NACK por SDA y se procede a STOP_1
 * STOP_1: Deja el reloj activo y fuerza SDA a 0
 * STOP_2: Fija el reloj a 1 y sigue forzando SDA a 0
-* STOP_3: Fija el reloj a 1 y fuerza SDA a 1
+* STOP_3: Fija el reloj a 1 y se suelta SDA
+* WAIT: Aumenta un contador y se mantiene hasta que haya pasado un tiempo
+* CHECK_T1: Compara el valor de temperatura obtenido del sensor con uno guardado, si no se cumple la condición, se pasa a SET_I1
+* CHECK_T2: Compara el valor de temperatura obtenido del sensor con uno guardado, este valor es menor al que contiene T1, de no cumplirse la condición se pasa a SET_I2, de cumplirse, se pasa a SET_I3
+* CH_CONF: Aqui se cambia el "cnt_st", contador el cual determina que bytes se van a enviar mediante el protocolo. Cuando se comienza todo el procedimiento, "cnt_st" es igual a 1
+* * Cuando dasdasd
+  * sdasda
 
