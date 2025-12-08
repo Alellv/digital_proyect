@@ -125,6 +125,4 @@ Para entender el diagrama de estados se hará una breve explicación de cada est
 * WAIT: Aumenta un contador y se mantiene hasta que haya pasado un tiempo
 * CHECK_T1: Compara el valor de temperatura obtenido del sensor con uno guardado, si no se cumple la condición, se pasa a SET_I1
 * CHECK_T2: Compara el valor de temperatura obtenido del sensor con uno guardado, este valor es menor al que contiene T1, de no cumplirse la condición se pasa a SET_I2, de cumplirse, se pasa a SET_I3
-* CH_CONF: Aqui se cambia el "cnt_st", contador el cual determina que bytes se van a enviar mediante el protocolo. Cuando se comienza todo el procedimiento, "cnt_st" es igual a 1 * DAWDSADA
-* DWADASD
-* DAWDW
+* CH_CONF: Aqui se cambia el "cnt_st", contador el cual determina que bytes se van a enviar mediante el protocolo. La primera vez que se llega a este estado "cnt_st" es igual a 1, que es la configuración para inicializar el sensor, en este momento "cnt_st" cambia a 2, lo cual determina la configuración de escritura en el siguiente ciclo; cuando se acaba el ciclo de escritura "cnt_st" cambia a 3, lo cual determina la configuración de lectura y una vez que se termina el ciclo de lectura "cnt_st" vuelve a 2, lo cual repite el ciclo de lectura y escritura.
