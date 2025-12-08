@@ -41,18 +41,25 @@ A continuación se muestran los diagramas se usarán para estructurar el funcion
 
 ![Diagrama de flujo](DiagramasProyecto/DiagramasPantalla_12bpp/Flujo.png)
 
-
+En este diagrama se puede ver como primero se inician las variables que se usarán para determinar como se envia la información,luego se determinan los datos que serán enviados a una fila columna a columna, estos datos se muestran en la matriz y luego se tiene un pequeño receso antes de enviar los datos de la siguiente fila, lo cual se repite indefinidamente para que desde el ojo humano se pueda ver claramente una imagen.
 
 ### Camino de datos
 
 ![Camino de datos](DiagramasProyecto/DiagramasPantalla_12bpp/Datos.png)
+
+En el camino de datos se puede ver el bloque de control con el cual se determinan cuando cambian las diferentes variables, contadores controlados por el bloque de control, un bloque de comparación, uno de memoria donde se guardan las imagenes y un multiplexor para mandar los datos de forma correcta a la pantalla.
+
+El cambio mencionado previamente es el hecho en este diagrama, donde se agregaron las entradas I1, I2, I3 al bloque de memoria, lo cual hará que dependiendo de cual entrada se encuentre activa, una imagen diferente se cargará en la salida de la memoria para la matriz.
 	
 ### Diagrama de estados
 
 ![Diagrama de estados](DiagramasProyecto/DiagramasPantalla_12bpp/Estados.png)
 
+El proceso del diagrama de estados inicia en START, donde se resetean contadores y se prepara el sistema, luego en GET_PIXEL se leen los datos del píxel correspondiente a la fila y columna actuales. Después, en INC_COL y SEND_ROW, se envía bit a bit la información RGB hacia el panel mientras el reloj y las señales de control generan los pulsos necesarios. Cuando una columna completa ha sido transmitida, se pasa a DELAY_ROW, que mantiene la fila encendida por el tiempo asociado al peso del bit actual, es decir, para aplicar PWM. Luego, en NEXT_BIT, se avanza al siguiente bit de importancia del color y se repite el ciclo. Una vez enviados todos los bits de PWM, INC_ROW avanza a la siguiente fila, y el proceso continúa hasta completar todas las filas, regresando finalmente a READY_FRAME para iniciar un nuevo refresco y mantener estable la imagen en pantalla.
 
 ## Diagramas sensor de temperatura AHT10
+
+A continuación se muestran los diagramas se usarán para estructurar el funcionamiento del sensor de temperatura AHT10.
 
 ### Diagramas de flujo
 
