@@ -33,6 +33,20 @@ Las imagenes usadas fueron sacadas de:
 
 (https://www-robot--electronics-co-uk.translate.goog/i2c-tutorial?_x_tr_sl=en&_x_tr_tl=es&_x_tr_hl=es&_x_tr_pto=tc)
 
+## Sensor de humedad y temperatura AHT10
+
+A continuación se muestra la forma en la que el sensor AHT10 se comunica mediante el protocolo I2C
+
+![Escritura](DiagramasProyecto/Imagenes/Escritura.png)
+
+Para la escritura de datos primero se envia un byte address para indicar que se va a escribir en el esclavo, posteriormente se envian tres bytes, uno de comando y dos de parametros.
+
+Para la configuración/calibración se envian los bytes 0xE1, 0x08, 0x00 mientras que para iniciar una medición se envian los bytes 0xAC, 0x33 0x00.
+
+![Lectura](DiagramasProyecto/Imagenes/Lectura.png)
+
+Para la lectura de datos primero se envia un byte address para indicar que se va a leer el esclavo, a lo cual el esclavo regresará 6 bytes, el primero se le llama byte de estado (el cual no se considerará en este caso), el segundo y tercero contienen datos de humedad, el cuarto contiene datos tanto de humedad como de temperatura mientras que el cuarto y quinto contienen datos de temperatura
+
 ## Diagramas de matriz de leds 12bpp
 
 A continuación se muestran los diagramas se usarán para estructurar el funcionamiento de la pantalla, no se profundizará demasiado en estos puesto que se basan casi en su totalidad en los proporcionados por el profesor, sufriendo solo el camino de datos una leve alternación.
