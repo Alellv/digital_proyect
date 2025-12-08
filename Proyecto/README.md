@@ -83,6 +83,12 @@ Una vez que se ha terminado la comunicación debido al bit de parada se regresa 
 
 ![Diagrama de flujo](DiagramasProyecto/DiagramasSensor/FlujoSensor.png)
 
+Este diagrama de flujo es más sencillo que el anterior debido a que su objetivo es explicar pequeños ajustes en los bytes que se van a enviar al sensor por medio del protocolo I2C, cabe aclarar que "i2c_flux" es una forma de representar que en ese punto se inicia el proceso del diagrama de flujo visto previamente desde el estado IDLE y se regresa a este diagrama una vez se pasa STOP. En el inicio se establecen los contadores y registros que se van a usar, entre estos el que más destaca es "data" debido a que es donde se representa la carga de los bytes que serán enviado, una vez aclarado eso es posible ver como se desarrolla el diagrama.
+
+Lo primero que se hace en cuanto todo el sistema recibe energia es configurar el sensor, por lo cual  se cargan los bytes de configuración en data y se prosigue con todo el proceso para enviar la información en el protocolo I2C. Una vez que se envian todos los bytes y se da la condición de parada es necesario esperar unos cuantos milisegundos para que el sensor se calibre, en cuanto se termine la espera se cargan los bytes que le indian al sensor que debe iniciar una medida, se hace el proceso de envio de datos por protocolo y se vuelve a entrar en un estado de espera. Cuando el tiempo de espera para la medida ha terminado se carga el byte para leer el sensor (el cual solo es el byte de address con la indicación de lectura) y se hace el proceso del protocolo, sin embargo esta vez en lugar de enviar datos, el maestro gruardará lo que entre por SDA en un registro interno.
+
+Tras haber hecho el proceso de lectura se hacen dos comparaciones con el valor de temperatura tomado del registro guardado y dependiendo de eso, se establece cual de las salidas I1, I2 o I3 se mantendrá activa en lo que se vuelve a hacer la toma de datos. Despues de la lectura no hay necesidad de esperar un tiempo, por lo cual en cuanto se defina cual salida estará activa, se regresa al momento en el que se le ordena al sensor para iniciar una medida.
+
 ### Camino de datos
 
 ![Camino de datos](DiagramasProyecto/DiagramasSensor/Datos.png)
