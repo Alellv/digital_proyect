@@ -92,7 +92,17 @@ Tras haber hecho el proceso de lectura se hacen dos comparaciones con el valor d
 ### Camino de datos
 
 ![Camino de datos](DiagramasProyecto/DiagramasSensor/Datos.png)
-	
+
+Es posible subdividir el camino de datos en cinco partes para tener una mejor comprensión del mismo:
+
+* Calibrador de tiempo (Bloques azules): El calibrador de tiempo tiene como objetivo generar SCL y una señal "SH_ST", la cual determinará cuando se cambia de estados y el tiempo que estarán activas ciertas señales durante un estado, "count_time" es un contador que siempre contará cierto número de ticks y aumentará "cnt_tick" cada vez que el contador sea igual a ese número de ticks, además de tener como salida el conteo "cnt_tick" también tiene como salida el instante en el que se cumple la igualdad, lo cual se lleva a "comp_tick", que hará que cuando "cnt_tick" sea igual a un valor y se de el instante de igualdad, "SH_ST" se active.
+"Comp_SCL" hace que dependiendo del valor de "cnt_tick" se suba o se baje la señal "scl_out", y finalmente comput_SCL hará que la salida SCL actue normalmente cuando "SCL_EN" sea igual a 1 pero que se mantenga en 1 cuando "SCL_EN" sea 0.
+* Contadores (Bloques naranjas): Se tienen cuatro bloques contadores, "count_bit" toma nota de cuantos bits del byte se han enviado, "count_by" toma nota de cuantos bytes fuera del de address se han escrito o leido además de determinar cual byte se esta enviando con "cnt_by", "count_wait" se usa para el tiempo de espera que tiene que haber luego de la configuración y la orden para tomar una medida y "count_st" se usa para determinar si se esta configurando, dando la orden de medida, o leyendo al esclavo (Sensor AHT10).
+* Manejo de datos (Bloque amarillo): Este bloque se encarga tanto de generar la salida como de la lectura de SDA por parte del maestro, los bloques internos que se muestran solo para representar mejor el funcionamiento de este. Para la salida de datos de SDA lo que ocurre es que al bloque le llega "SDA_OE", esto hace que el maestro fuerce los datos en SDA. Los bits que van a ser enviados en son guardados en un registro el cual carga esos bits con la señal respectiva de "LD" y si es necesario, usando "cnt_by", los bits enviados van cambiando con "SH_WR" para ser pasados por un comparador cuyo objetivo es que en vez de mandar 1 y 0 el maestro envie z y 0, forzando asi 0 para cada 0 y soltando la linea con z para cada 1. Para la lectura de datos se hace que el maestro suelte la linea (SDA=Z) y empiece a guardar los datos en un registro usando "SH_RD".
+* Comparadores (Bloques verdes): Hay tres bloques de comparadores (sin contar los del tiempo), dos de estos comparan el valor de temperatura obtenido al revisar ciertos bits del resultado de la medida del sensor ("comp_t1","comp_t2") y el otro revisa si se recibe el bit ACK del esclavo.
+* Control (Bloque rojo): Este bloque se encarga de determinar en que momento se activa cada señal dependiendo de los valores de entrada y el estado actual, es importante destacar que de aqui salen las señales que determinan que imagen sale en la matriz de leds.
+
+
 ### Diagrama de estados
 
 ![Diagrama de estados](DiagramasProyecto/DiagramasSensor/Estados.png)
