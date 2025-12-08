@@ -6,7 +6,7 @@ A continuación una breve explicación de las bases para el funcionamiento del p
 
 ## Interfaz de conexión HUB75E
 
-![HUB75E](DiagramasProyecto/Imagenes/HUB75E.png)
+![HUB75](DiagramasProyecto/Imagenes/HUB75.png)
 
 La interfaz de conexión HUB75E es un conector que consiste de 16 pines utilizado en matrices LED RGB para transmitir datos y señales de control, incluye seis líneas de datos (R0/1, G0/1, B0/1) las cuales envian los bits de color a dos filas simultáneas del panel, además de las líneas de selección (A, B, C, D) que determinan qué grupo de filas se activa en cada ciclo, están las señales de control CLK, LATCH y /OE que permiten sincronizar la carga de datos y el encendido de los LEDs, mientras que los pines GND sirven como referencia a tierra. Es esta combinación de señales la cual permite refrescar la pantalla rápidamente mediante multiplexación por filas.
 
