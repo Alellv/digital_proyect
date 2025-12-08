@@ -47,6 +47,9 @@ Para la configuración/calibración se envian los bytes 0xE1, 0x08, 0x00 mientra
 
 Para la lectura de datos primero se envia un byte address para indicar que se va a leer el esclavo, a lo cual el esclavo regresará 6 bytes, el primero se le llama byte de estado (el cual no se considerará en este caso), el segundo y tercero contienen datos de humedad, el cuarto contiene datos tanto de humedad como de temperatura mientras que el cuarto y quinto contienen datos de temperatura
 
+Imagenes tomadas del datasheet del sensor:
+(https://altronics.cl/uploads/AHT10.pdf)
+
 ## Diagramas de matriz de leds 12bpp
 
 A continuación se muestran los diagramas se usarán para estructurar el funcionamiento de la pantalla, no se profundizará demasiado en estos puesto que se basan casi en su totalidad en los proporcionados por el profesor, sufriendo solo el camino de datos una leve alternación.
