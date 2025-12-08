@@ -18,6 +18,6 @@ Este es el repositorio de calculadora y proyecto final de Electronica Digital Un
 
 Para la calculadora, la carpeta de cada periferico diseñado se encuentra un archivo README.md el cual muestra los diagramas de flujo, estado y camino de datos correspondientes.
 
-La carpeta de proyecto, contiene los codigos para el funcionamiento de una pantalla LED y un sensor de temperatura AHT10, en el README.md se hará una breve explicación de los conceptos basicos aplicados a esto junto con los diagramas usados para su desarrollo.
+La carpeta de proyecto contiene los codigos para el funcionamiento de una pantalla LED y un sensor de temperatura AHT10, en el README.md se hará una breve explicación de los conceptos basicos aplicados a esto junto con los diagramas usados para su desarrollo.
 
-En la carpeta de rubricas se encuentran las rubricas de co y auto evaluación.
+En la carpeta de rubricas se encuentran las rubricas de co y auto evaluación de cada miembro del grupo.
