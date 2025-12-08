@@ -6,7 +6,7 @@ David Fernando Castro Godoy (1048846371).
 
 Alejando Llano Vesga.
 
-Duvan Albeiro Bustos.
+Duvan Albeiro Bustos (1105780067).
 
 ## Contenidos
 
