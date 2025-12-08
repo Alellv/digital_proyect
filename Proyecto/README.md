@@ -16,11 +16,11 @@ La imagen sacada fue obtenida del libro proporcionado por el profesor.
 
 ![Diagrama de flujo](DiagramasProyecto/Imagenes/DispositivosI2C.png)
 
-En esta imagen se muestra la conección de los dispositivos que se usarán con el protocolo I²C, en esta se puede ver como se establece el bus de comunicación que se compone por dos líneas compartidas: SCL (reloj) y SDA (datos). Ambas líneas son de tipo open-drain/open-collector, por lo que es necesario el uso resistencias de pull-up (Rp) que las mantienen en nivel alto cuando ningún dispositivo las está usando. Todos los dispositivos (tanto el maestro como uno o varios esclavos) se conectan en paralelo a estas dos líneas, lo cual permite una comunicación entre dispositivos sin conflicto mientras solo un maestro controla el reloj.
+En esta imagen se muestra la conección de los dispositivos que se usarán con el protocolo I2C, en esta se puede ver como se establece el bus de comunicación que se compone por dos líneas compartidas: SCL (reloj) y SDA (datos). Ambas líneas son de tipo open-drain/open-collector, por lo que es necesario el uso resistencias de pull-up (Rp) que las mantienen en nivel alto cuando ningún dispositivo las está usando. Todos los dispositivos (tanto el maestro como uno o varios esclavos) se conectan en paralelo a estas dos líneas, lo cual permite una comunicación entre dispositivos sin conflicto mientras solo un maestro controla el reloj.
 
 ![Diagrama de flujo](DiagramasProyecto/Imagenes/STSP.png)
 
-Para este protocolo hay condiciones especiales para dar un inicio y un fin a la comunicación. La condición de START (S) ocurre cuando SDA pasa de alto a bajo mientras SCL está alto, indicando a todos los dispositivos que empieza una transmisión. La condición de STOP (P) ocurre cuando SDA pasa de bajo a alto mientras SCL está alto, señalando el final de la comunicación y liberando el bus. Estas dos secuencias son esenciales para enmarcar los mensajes y coordinar el acceso al bus I²C y su forma es la que se muestra en la imagen anterior.
+Para este protocolo hay condiciones especiales para dar un inicio y un fin a la comunicación. La condición de START (S) ocurre cuando SDA pasa de alto a bajo mientras SCL está alto, indicando a todos los dispositivos que empieza una transmisión. La condición de STOP (P) ocurre cuando SDA pasa de bajo a alto mientras SCL está alto, señalando el final de la comunicación y liberando el bus. Estas dos secuencias son esenciales para enmarcar los mensajes y coordinar el acceso al bus I2C y su forma es la que se muestra en la imagen anterior.
 
 ![Diagrama de flujo](DiagramasProyecto/Imagenes/BusCompos.png)
 
@@ -59,15 +59,19 @@ El proceso del diagrama de estados inicia en START, donde se resetean contadores
 
 ## Diagramas sensor de temperatura AHT10
 
-A continuación se muestran los diagramas se usarán para estructurar el funcionamiento del sensor de temperatura AHT10.
+A continuación se muestran los diagramas se usarán para estructurar el funcionamiento del sensor de temperatura y humedad AHT10.
 
 ### Diagramas de flujo
+
+Se usaron dos diagramas de flujo para representar el funcionamiento, esto para facilitar la representación del hecho de que se usa repetidas veces el protocolo I2C para enviar o recibir datos.
 
 #### Diagrama de flujo para protocolo I2C
 
 ![Diagrama de flujo](DiagramasProyecto/DiagramasSensor/FlujoI2C.png)
 
-#### Diagrama de flujo para protocolo I2C
+En este primer diagrama de flujo se establece como tal el funcionamiento del protocolo I2C. Primero se inician los contadores que se van a usar, luego se va a un estado de inactividad hasta que se de una señal de inicio para comenzar con la comunicación por protocolo; Una vez que
+
+#### Diagrama de flujo para sensor AHT10
 
 ![Diagrama de flujo](DiagramasProyecto/DiagramasSensor/FlujoSensor.png)
 
