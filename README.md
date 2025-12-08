@@ -2,7 +2,7 @@
 
 ## Integrantes del grupo
 
-David Fernando Castro Godoy.
+David Fernando Castro Godoy (1048846371).
 
 Alejando Llano Vesga.
 
