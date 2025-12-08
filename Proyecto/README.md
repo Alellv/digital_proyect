@@ -2,18 +2,17 @@
 
 ## Diagramas de matriz de leds 12bpp
 
-### Primera version
+### Diagrama de flujo
 
-![Diagrama de flujo divisor v1](diag/DfdivV1.drawio.png)
+![Diagrama de flujo](DiagramasProyecto/DiagramasPantalla_12bpp/Flujo.png)
 
+### Camino de datos
 
-## Camino de datos
-
-![Camino de datos](diag/Cdatosdiv.drawio.png)
+![Camino de datos](DiagramasProyecto/DiagramasPantalla_12bpp/Datos.png)
 	
-## Diagrama de estados
+### Diagrama de estados
 
-![Diagrama de estados](diag/Destadosdiv.drawio.png)
+![Diagrama de estados](DiagramasProyecto/DiagramasPantalla_12bpp/Estados.png)
 
 ## Simulación periferico
 
