@@ -1,0 +1,63 @@
+[*]
+[*] GTKWave Analyzer v3.3.117 (w)1999-2023 BSI
+[*] Mon Dec  8 23:45:20 2025
+[*]
+[dumpfile] "/home/work/Documents/proyectolamae/I2CSENSOR/I2C2/i2c_top_TB.vcd"
+[dumpfile_mtime] "Mon Dec  8 23:26:03 2025"
+[dumpfile_size] 28008880
+[savefile] "/home/work/Documents/proyectolamae/I2CSENSOR/I2C2/SENSOR.gtkw"
+[timestart] 0
+[size] 1854 1011
+[pos] -51 -51
+*-31.000000 5067000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] i2c_top_TB.
+[treeopen] i2c_top_TB.uut.
+[sst_width] 216
+[signals_width] 166
+[sst_expanded] 1
+[sst_vpaned_height] 619
+@28
+i2c_top_TB.uut.ctrl_i2cs.init
+@22
+i2c_top_TB.uut.count_time.count[5:0]
+@28
+i2c_top_TB.uut.count_time.cnt_tick[1:0]
+i2c_top_TB.uut.count_time.i2c_tick
+[color] 6
+i2c_top_TB.uut.comp_tick.SH_ST
+@22
+i2c_top_TB.uut.SDA_mng.data_sav[47:0]
+@28
+[color] 6
+i2c_top_TB.uut.ctrl_i2cs.cnt_st[1:0]
+i2c_top_TB.uut.count_st.INC_ST
+i2c_top_TB.uut.ctrl_i2cs.DEC_ST
+@820
+[color] 6
+i2c_top_TB.uut.ctrl_i2cs.state_name[320:1]
+@28
+[color] 2
+i2c_top_TB.uut.ctrl_i2cs.SDA_OE
+[color] 1
+i2c_top_TB.uut.SDA_mng.SDA
+[color] 3
+i2c_top_TB.uut.compout_SCL.SCL
+@24
+i2c_top_TB.uut.count_by.cnt_by[2:0]
+@22
+i2c_top_TB.uut.SDA_mng.data_out[8:0]
+@28
+[color] 7
+i2c_top_TB.uut.ctrl_i2cs.LD_START
+[color] 7
+i2c_top_TB.uut.ctrl_i2cs.LD_STOP
+[color] 7
+i2c_top_TB.uut.ctrl_i2cs.LD_ADWR
+[color] 7
+i2c_top_TB.uut.ctrl_i2cs.LD_ADRD
+[color] 7
+i2c_top_TB.uut.ctrl_i2cs.LD_CONF
+[color] 7
+i2c_top_TB.uut.ctrl_i2cs.LD_MD
+[pattern_trace] 1
+[pattern_trace] 0
