@@ -128,7 +128,6 @@ Para entender el diagrama de estados se hará una breve explicación de cada est
 
 * IDLE: Se espera la señal de inicio, SDA y SCL se mantienen en "1"
 * START_1: SDA es forzado a 0, se mantiene SCL en "1"
-* START_2: SCL se suelta, lo cual permite que suba y baje en intervalos regulares, además de eso se carga el byte de address de escritura si se esta en la etapa de configuración/inicio-de-medida y el byte address de lectura si se esta en la etapa de lectura del sensor
 * ADDRESS: Se envia el byte address correspondiente.
 * READ_ACK: Se verifica que el sensor envie un ACK, se establece el conteo de bytes y se cargan los bytes dependiendo si se va a configurar o a iniciar una medida. Si no se recibe un ACK, se regresa a IDLE
 * WRITE_DATA: Se envia el byte cargado bit a bit
@@ -136,9 +135,8 @@ Para entender el diagrama de estados se hará una breve explicación de cada est
 * READ_DATA: Se guardan los bits enviados por el esclavo mediante SDA en un registro, si el contador de bytes determina que aun no se han leido todos los bytes, se procede a WRITE_ACK, por el contrario, se procede a WRITE_NACK
 * WRITE_ACK: Se envia un bit ACK por SDA, además se cambia el contador de byte y se procede de nuevo a READ_DATA
 * WRITE_NACK: Se envia un bit NACK por SDA y se procede a STOP_1
-* STOP_1: Deja el reloj activo y fuerza SDA a 0
-* STOP_2: Fija el reloj a 1 y sigue forzando SDA a 0
-* STOP_3: Fija el reloj a 1 y se suelta SDA
+* STOP_1: Se fija el reloj a 1 y se fuerza SDA a 0
+* STOP_2: Se fija el reloj a 1 y se suelta SDA
 * WAIT: Aumenta un contador y se mantiene hasta que haya pasado un tiempo
 * CHECK_T1: Compara el valor de temperatura obtenido del sensor con uno guardado, si no se cumple la condición, se pasa a SET_I1
 * CHECK_T2: Compara el valor de temperatura obtenido del sensor con uno guardado, este valor es menor al que contiene T1, de no cumplirse la condición se pasa a SET_I2, de cumplirse, se pasa a SET_I3
