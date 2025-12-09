@@ -127,7 +127,7 @@ Es posible subdividir el camino de datos en cinco partes para tener una mejor co
 Para entender el diagrama de estados se hará una breve explicación de cada estado:
 
 * IDLE: Se espera la señal de inicio, SDA y SCL se mantienen en "1"
-* START_1: SDA es forzado a 0, se mantiene SCL en "1"
+* START_1: SDA es forzado a 0, se mantiene SCL en "1" y se carga el byte address de lectura/escritura según corresponda
 * ADDRESS: Se envia el byte address correspondiente.
 * READ_ACK: Se verifica que el sensor envie un ACK, se establece el conteo de bytes y se cargan los bytes dependiendo si se va a configurar o a iniciar una medida. Si no se recibe un ACK, se regresa a IDLE
 * WRITE_DATA: Se envia el byte cargado bit a bit
